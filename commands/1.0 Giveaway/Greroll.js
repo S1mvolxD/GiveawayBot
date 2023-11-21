@@ -1,10 +1,10 @@
 module.exports = [{
     name: "greroll",
     code: `
-$editMessage[$message[1];{newEmbed:{title:Розыгрыш закончен.} {description:
-    Организатор: <@!$getMessageVar[host;$message[1]]>
-    Приз: **$getMessageVar[prize;$message[1]]**
-Победитель(ли): $if[$get[random]==;Нет победителя (нет участника);$get[random]]} {color:$getServerVar[color]}};$channelID]
+$editMessage[$message[1];{newEmbed:{title:The drawing is over.} {description:
+    Organizer: <@!$getMessageVar[host;$message[1]]>
+    Prize: **$getMessageVar[prize;$message[1]]**
+Winner (Lee): $if[$get[random]==;No winner (no participant);$get[random]]} {color:$getServerVar[color]}};$channelID]
 $SendMessage[$if[$get[random]!=;Congrats $get[random] you won **$getMessageVar[prize;$message[1]]**;Not enough participants]]
 
 $let[random;$djsEval[
@@ -28,16 +28,15 @@ return a!='<@!undefined>' && a != '' && a != 'undefined'
 }).join(", ")
 
 ;true]]
-$onlyIf[$getMessage[$channelID;$message[1]]==Раздача завершена!;
-Розыгрыш с указанным идентификатором еще не завершен или недействителен]
-$onlyIf[$message[1]!=;Укажите действительный идентификатор сообщения]
+$onlyIf[$getMessage[$channelID;$message[1]]!=The distribution is complete!;{newEmbed:{title:Error}{description:The provided distribution ID has already ended or is invalid}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
+$onlyIf[$message[1]!=;{newEmbed:{title:Error MessageID}{description:Give a valid message ID}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
 
-$onlyPerms[managemessages;{newEmbed:{title:Ошибка}{description:Извените но, у вас отсутствует разрашение на "Управлять сообщениями"}{color:Red}}]
-$onlyPerms[managechannels;{newEmbed:{title:Ошибка}{description:Извените но, у вас отсутствует разрашение на "Управлять каналами"}{color:Red}}]
+$onlyPerms[managemessages;{newEmbed:{title:Permissons Error User}{description:Sorry, but you don't have permission to "Manage Messages"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
+$onlyPerms[managechannels;{newEmbed:{title:Permissons Error User}{description:Sorry, but you don't have permission to "Manage Channels"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
 
-$onlyClientPerms[managechannels;{newEmbed:{title:Ошибка}{description:Извените но, у бота отсутствует разрашение на "Управлять каналами"}{color:Red}}]
-$onlyClientPerms[addreactions;{newEmbed:{title:Ошибка}{description:Извените но, у бота отсутствует разрашение на "Добалять реакции"}{color:Red}}]
-$onlyClientPerms[managemessages;{newEmbed:{title:Ошибка}{description:Извените но, у бота отсутствует разрашение на "Управлять сообщениями"}{color:Red}}]
+$onlyClientPerms[managechannels;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Manage channels"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
+$onlyClientPerms[addreactions;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Add reactions"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
+$onlyClientPerms[managemessages;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Manage Messages"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
 $suppressErrors
 `
 }]
