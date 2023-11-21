@@ -26,7 +26,7 @@ win.split(" ").filter(function(a) {
 return a!='<@!undefined>' && a != ''
 }).join(", ")
 ;true]]
-$onlyIf[$getMessage[$channelID;$message[1]]!=The distribution is complete!;The provided distribution ID has already ended or is invalid]
+$onlyIf[$getMessage[$channelID;$message[1]]!=The distribution is complete!;{newEmbed:{title:Error}{description:The provided distribution ID has already ended or is invalid}{color:Red}}]
 $onlyIf[$message[1]!=;{newEmbed:{title:Error MessageID}{description:Give a valid message ID}{color:Red}}]
 
 $onlyPerms[managemessages;{newEmbed:{title:Permissons Error User}{description:Sorry, but you don't have permission to "Manage Messages"}{color:Red}}]
