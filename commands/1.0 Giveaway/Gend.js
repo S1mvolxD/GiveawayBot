@@ -27,13 +27,13 @@ return a!='<@!undefined>' && a != ''
 }).join(", ")
 ;true]]
 $onlyIf[$getMessage[$channelID;$message[1]]!=The distribution is complete!;The provided distribution ID has already ended or is invalid]
-$onlyIf[$message[1]!=;Give a valid message ID]
+$onlyIf[$message[1]!=;{newEmbed:{title:Error MessageID}{description:Give a valid message ID}{color:Red}}]
 
 $onlyPerms[managemessages;{newEmbed:{title:Permissons Error User}{description:Sorry, but you don't have permission to "Manage Messages"}{color:Red}}]
 $onlyPerms[managechannels;{newEmbed:{title:Permissons Error User}{description:Sorry, but you don't have permission to "Manage Channels"}{color:Red}}]
 
-$onlyClientPerms[managechannels;{newEmbed:{title:Permissons Error Bot}{description:Excuse me, but the bot does not have a "Manage channels" coloring}{color:Red}}]
-$onlyClientPerms[addreactions;{newEmbed:{title:Permissons Error Bot}{description:Excuse me, but the bot does not have the coloring to "Add reactions"}{color:Red}}]
-$onlyClientPerms[managemessages;{newEmbed:{title:Permissons Error Bot}{description:Excuse me, but the bot does not have a "Manage Messages" coloring}{color:Red}}]
+$onlyClientPerms[managechannels;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Manage channels"}{color:Red}}]
+$onlyClientPerms[addreactions;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Add reactions"}{color:Red}}]
+$onlyClientPerms[managemessages;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Manage Messages"}{color:Red}}]
 $suppressErrors`
 }]
