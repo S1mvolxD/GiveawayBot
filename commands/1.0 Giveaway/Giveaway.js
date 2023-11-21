@@ -42,13 +42,12 @@ module.exports = [{
         \`$getGuildVar[prefix]gstart [Time] [Winners] [Prize]\`}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
     $let[p;$parseTime[$if[$message[1]!=;$message[1];1s10ms]]]
 
-    $onlyPerms[managemessages;{newEmbe$onlyPerms[managemessages;{newEmbed:{title:Permissons Error User}{description:Sorry, but you don't have permission to "Manage Messages"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
+$onlyPerms[managemessages;{newEmbed:{title:Permissons Error User}{description:Sorry, but you don't have permission to "Manage Messages"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
 $onlyPerms[managechannels;{newEmbed:{title:Permissons Error User}{description:Sorry, but you don't have permission to "Manage Channels"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
 
 $onlyClientPerms[managechannels;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Manage channels"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
 $onlyClientPerms[addreactions;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Add reactions"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
-$onlyClientPerms[managemessages;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Manage Messages"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
-    $suppressErrors
+$onlyClientPerms[managemessages;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Manage Messages"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]$suppressErrors
     `
 },{
     name: "gw",
