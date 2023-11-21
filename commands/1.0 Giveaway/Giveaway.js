@@ -1,6 +1,6 @@
 module.exports = [{
     name: "giveaway",
-//    aliases: "gstart",
+    aliases: "gstart",
     code: `
     $setMessageVar[host;$authorID;$get[id]]
     $setMessageVar[win;$message[2];$get[id]]
@@ -22,46 +22,46 @@ module.exports = [{
     $let[id;$sendMessage[
         {reactions:🎉} 
         {newEmbed:
-            {title:Начало розыгрыша.}
+            {title:The beginning of the drawing.}
             {description:
-                • Окончание: <t:$splitText[1]$textSplit[$math[($datestamp+$parseTime[$message[1]])/1000];.]:R> (<t:$splitText[1]$textSplit[$math[($datestamp+$parseTime[$message[1]])/1000];.]:D>)
-                • Организатор: <@!$authorID>
-                • Приз: **$messageSlice[2]**
-                • Победители: **$message[2]**} 
+                • Ending: <t:$splitText[1]$textSplit[$math[($datestamp+$parseTime[$message[1]])/1000];.]:R> (<t:$splitText[1]$textSplit[$math[($datestamp+$parseTime[$message[1]])/1000];.]:D>)
+                • Organizer: <@!$authorID>
+                • Prize: **$messageSlice[2]**
+                • Winners: **$message[2]**} 
 {color:$getVar[color]}};true]]
     
-    $onlyIf[$messageSlice[2]!=;{newEmbed:{title:Ошибка}{description:**Приз должен быть вручен**
-    **Правильное использование: **
-    \`$getGuildVar[prefix]gstart [время] [победители] [приз]\`}{color:Red}{footer:Ошибка ~ $username[$authorID]:$authorAvatar}}]
-    $onlyIf[$isNumber[$message[2]]==true;{newEmbed:{title:Ошибка}{description:**Указанный победитель должен быть номером и выше 0**
-    **Правильное использование: **
-    \`$getGuildVar[prefix]gstart [время] [победители] [приз]\`}{color:Red}{footer:Ошибка ~ $username[$authorID]:$authorAvatar}}]
+    $onlyIf[$messageSlice[2]!=;{newEmbed:{title:Error}{description:**The prize must be awarded**
+    **Proper use:**
+    \`$getGuildVar[prefix]gstart [Time] [Winners] [Prize]\`}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
+    $onlyIf[$isNumber[$message[2]]==true;{newEmbed:{title:Error}{description:**The specified winner must be a number and above 0**
+    **Proper use:**
+    \`$getGuildVar[prefix]gstart [Time] [Winners] [Prize]\`}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
 
-    $onlyIf[$get[p]!=-1;{newEmbed:{title:Ошибка}{description:**Указанное время недействительно, пожалуйста, укажите правильное время, например**
-        \`1s, 1m, 1h, 1d\`** Правильное использование: **
-        \`$getGuildVar[prefix]gstart [время] [победители] [приз]\`}{color:Red}{footer:Ошибка ~ $username[$authorID]:$authorAvatar}}]
+    $onlyIf[$get[p]!=-1;{newEmbed:{title:Error}{description:**The specified time is invalid, please specify the correct time, for example**
+        \`1s, 1m, 1h, 1d\`** Proper use: **
+        \`$getGuildVar[prefix]gstart [Time] [Winners] [Prize]\`}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
     $let[p;$parseTime[$if[$message[1]!=;$message[1];1s10ms]]]
 
-    $onlyPerms[managemessages;{newEmbed:{title:Ошибка}{description:Извените но, у вас отсутствует разрашение на "Управлять сообщениями"}{color:Red}{footer:Ошибка ~ $username[$authorID]:$authorAvatar}}]
-    $onlyPerms[managechannels;{newEmbed:{title:Ошибка}{description:Извените но, у вас отсутствует разрашение на "Управлять каналами"}{color:Red}{footer:Ошибка ~ $username[$authorID]:$authorAvatar}}]
+    $onlyPerms[managemessages;{newEmbe$onlyPerms[managemessages;{newEmbed:{title:Permissons Error User}{description:Sorry, but you don't have permission to "Manage Messages"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
+$onlyPerms[managechannels;{newEmbed:{title:Permissons Error User}{description:Sorry, but you don't have permission to "Manage Channels"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
 
-    $onlyClientPerms[managechannels;{newEmbed:{title:Ошибка}{description:Извените но, у бота отсутствует разрашение на "Управлять каналами"}{color:Red}{footer:Ошибка ~ $username[$authorID]:$authorAvatar}}]
-    $onlyClientPerms[addreactions;{newEmbed:{title:Ошибка}{description:Извените но, у бота отсутствует разрашение на "Добалять реакции"}{color:Red}{footer:Ошибка ~ $username[$authorID]:$authorAvatar}}]
-    $onlyClientPerms[managemessages;{newEmbed:{title:Ошибка}{description:Извените но, у бота отсутствует разрашение на "Управлять сообщениями"}{color:Red}{footer:Ошибка ~ $username[$authorID]:$authorAvatar}}]
+$onlyClientPerms[managechannels;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Manage channels"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
+$onlyClientPerms[addreactions;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Add reactions"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
+$onlyClientPerms[managemessages;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Manage Messages"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
     $suppressErrors
     `
 },{
     name: "gw",
     type: "timeout",
     code: `
-    $editMessage[$timeoutData[mid];{newEmbed:{title:Розыгрыш закончен.} {description:
-        • Закончилось: <t:$splitText[1]$textSplit[$math[($datestamp+$parseTime[$message[1]])/1000];.]:R> (<t:$splitText[1]$textSplit[$math[($datestamp+$parseTime[$message[1]])/1000];.]:D>)
-        • Организатор: <@!$timeoutData[host]>
-        • Приз: **$timeoutData[prize]**
-        • Победитель(ли): $if[$get[random]==;Нет победителя **(нет участника)**;$get[random]]} {color:$getVar[color]}};$timeoutData[cid]]
+    $editMessage[$timeoutData[mid];{newEmbed:{title:The drawing is over.} {description:
+        • Ending: <t:$splitText[1]$textSplit[$math[($datestamp+$parseTime[$message[1]])/1000];.]:R> (<t:$splitText[1]$textSplit[$math[($datestamp+$parseTime[$message[1]])/1000];.]:D>)
+        • Organizer: <@!$timeoutData[host]>
+        • Prize: **$timeoutData[prize]**
+        • Winners: $if[$get[random]==;No winner **(no participant)**;$get[random]]} {color:$getVar[color]}};$timeoutData[cid]]
         
         $channelSendMessage[$timeoutData[cid];$if[$get[random]!=;
-        Поздравляю $get[random] Ты победил **$timeoutData[prize]**;Недостаточно участников]]
+        Congratulations $get[random] You won **$timeoutData[prize]**;Not enough participants]]
         
         $let[random;$djsEval[
         var arrayy = "$getReactions[$timeoutData[cid];$timeoutData[mid];🎉;true;id]".split(",")
@@ -81,7 +81,7 @@ module.exports = [{
         return a!='<@!undefined>' && a != ''
         }).join(", ")
         ;true]]
-        $onlyIf[$getMessage[$timeoutData[cid];$timeoutData[mid]]!=Раздача завершена!;]
+        $onlyIf[$getMessage[$timeoutData[cid];$timeoutData[mid]]!=The distribution is complete!;]
         $suppressErrors
     `
 }]
