@@ -1,7 +1,7 @@
 const { AoiClient } = require("aoi.js");
 
 const client = new AoiClient({
-  token: "MTE2MzYzNDYyOTg0OTQwMzM5Mg.GBb9cT.-KEYOfwM_pfjkfjMO8ZSM1WYCj2WxrOfuKPlV0",
+  token: "XXX-XXX-XXX",
   prefix: "g!",
   intents: ["MessageContent", "Guilds", "GuildMessages"],
   events: ["onMessage", "onInteractionCreate"],
@@ -19,16 +19,3 @@ const client = new AoiClient({
 client.loadCommands("./commands/", true);
 
 require("./handler/variables.js")(client);
-
-client.command({
-    name: "up",
-    code: `
-    $updatecommands
-    команды обновились!`
-})
-
-client.command({
-  name: "eval",
-  code: `
-  $eval[$message]`
-})
