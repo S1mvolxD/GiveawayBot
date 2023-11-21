@@ -1,4 +1,4 @@
-# GiveawayBot
+# GiveawayBot(Beta)
 GiveawayBot on Aoi.js
 
 # Install Aoi.js
