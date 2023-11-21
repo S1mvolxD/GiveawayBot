@@ -26,14 +26,14 @@ win.split(" ").filter(function(a) {
 return a!='<@!undefined>' && a != ''
 }).join(", ")
 ;true]]
-$onlyIf[$getMessage[$channelID;$message[1]]!=The distribution is complete!;{newEmbed:{title:Error}{description:The provided distribution ID has already ended or is invalid}{color:Red}}]
-$onlyIf[$message[1]!=;{newEmbed:{title:Error MessageID}{description:Give a valid message ID}{color:Red}}]
+$onlyIf[$getMessage[$channelID;$message[1]]!=The distribution is complete!;{newEmbed:{title:Error}{description:The provided distribution ID has already ended or is invalid}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
+$onlyIf[$message[1]!=;{newEmbed:{title:Error MessageID}{description:Give a valid message ID}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
 
-$onlyPerms[managemessages;{newEmbed:{title:Permissons Error User}{description:Sorry, but you don't have permission to "Manage Messages"}{color:Red}}]
-$onlyPerms[managechannels;{newEmbed:{title:Permissons Error User}{description:Sorry, but you don't have permission to "Manage Channels"}{color:Red}}]
+$onlyPerms[managemessages;{newEmbed:{title:Permissons Error User}{description:Sorry, but you don't have permission to "Manage Messages"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
+$onlyPerms[managechannels;{newEmbed:{title:Permissons Error User}{description:Sorry, but you don't have permission to "Manage Channels"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
 
-$onlyClientPerms[managechannels;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Manage channels"}{color:Red}}]
-$onlyClientPerms[addreactions;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Add reactions"}{color:Red}}]
-$onlyClientPerms[managemessages;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Manage Messages"}{color:Red}}]
+$onlyClientPerms[managechannels;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Manage channels"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
+$onlyClientPerms[addreactions;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Add reactions"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
+$onlyClientPerms[managemessages;{newEmbed:{title:Permissons Error Bot}{description:Sorry, but I don't have permission to "Manage Messages"}{color:Red}{footer:Error ~ $username[$authorID]:$authorAvatar}}]
 $suppressErrors`
 }]
