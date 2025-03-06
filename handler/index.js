@@ -5,9 +5,6 @@ const { join } = require('node:path');
 
 exports.Handlers = async (client) => {
     loadAntiCrash();
-    /*Object.entries(require('./variables.js')).forEach(([table, variable]) => {
-        client.variables(variable, table);
-    });*/
 
     new Functions(client, join(__dirname, 'functions'), false);
     client.os = require('os');
