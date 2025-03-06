@@ -16,3 +16,9 @@ time: "",
 date: "",
 prize: "",
 ```
+
+## Description of the commands
+
+| Name | Description | Status | Type |
+| :---         |     :---:      |      :---:      |        ---: |
+| giveawayStart   | Start the drawing     | ⚠️ Commands Updates    | Prefix/Slash | 
