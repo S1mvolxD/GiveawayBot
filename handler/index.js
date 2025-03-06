@@ -1,5 +1,5 @@
 const { REST, Routes } = require('discord.js');
-const { Functions } = require('./Functions.js');
+const { Functions } = require('./functions.js');
 const { readdirSync, statSync } = require('node:fs');
 const { join } = require('node:path');
 
